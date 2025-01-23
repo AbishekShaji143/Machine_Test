@@ -3,16 +3,17 @@ $(document).ready(function(){
         loop:true,
         margin:50,
         nav:true,
+        dots:false,
         responsiveClass:true,
         responsive:{
             0:{
                 items:1,
                
             },
-            600:{
+            991:{
                 items:2,
             },
-            1000:{
+            1200:{
                 items:3,
             }
         }
@@ -23,7 +24,7 @@ $(document).ready(function(){
         nav:false,
         dots:false,
         responsiveClass:true,
-        stagePadding: 150,
+    
         autoHeight: true,
         autoplay:true,
         autoplayTimeout:5000,
@@ -32,18 +33,26 @@ $(document).ready(function(){
                 items:1,
                
             },
-            600:{
-                items:2,
+            991:{
+                items:1,
+                stagePadding: 0,
             },
             1000:{
                 items:2,
             }
         }
     });
+    $(window).scroll(function() {    
+    var scroll = $(window).scrollTop();
+
+     //>=, not <=
+    if (scroll >= 200) {
+        //clearHeader, not clearheader - caps H
+        $("header").addClass("fixed-header");
+    }
+    else{
+        $("header").removeClass("fixed-header");
+    }
+}); //missing );
     // add class on click 
-    $('.navbar-nav li a').click(function(){
-        $(".navbar-nav li a").removeClass("active");
-        $(this).addClass("active");
-        
-    });
-})
+});
