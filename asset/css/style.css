@@ -1008,6 +1008,9 @@ footer{
         max-width: 100%;
         min-height: auto;
     }
+    .gallery-img-list{
+        margin: unset;
+    }
 }
 @media(max-width:767px){
     .footer-top{
