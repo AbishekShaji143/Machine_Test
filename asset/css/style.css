@@ -73,6 +73,9 @@ header{
 .header-bottom{
     padding-top: 56px;
 }
+.fixed-header .header-bottom{
+    padding-top: 26px;
+}
 .header-bottom .navbar-nav{
 width: 853px;
     justify-content: space-between;
@@ -114,15 +117,60 @@ header .header-top{
     display: none;
     transform: .3s;
 }
+.navbar-brand img{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
 /* Banner */
 .banner{
-    background-image: url("../image/banner.png");
+    /* background-image: url("../image/banner.png");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
     min-height: 100vh !important;
     z-index: 2;
     position: relative;
+}
+.banner-carousel{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100% !important;
+    z-index: -1;
+}
+.banner-carousel .owl-stage-outer,
+.banner-carousel .owl-stage,
+.banner-carousel .owl-item,
+.banner-carousel .owl-item li,
+.banner-carousel .owl-item li figure,
+.banner-carousel .owl-item li figure img {
+    height: 100%;
+}
+.banner-carousel .owl-item li figure img{
+    object-fit: cover;
+    width: 100%;
+}
+.banner-carousel .owl-dots{
+    position: absolute;
+    width: 100%;
+    bottom: 40px;
+    display: flex;
+    align-items: center ;
+    justify-content: center;
+}
+.banner-carousel .owl-dots .owl-dot{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: white;
+    margin-right: 10px;
+}
+.banner-carousel .owl-dots .owl-dot.active{
+    background-color: grey;
 }
 .banner-full{
     padding-top: 640px;
@@ -198,11 +246,17 @@ header .header-top{
     align-items: center;
     margin-top: 55px;
     letter-spacing: 20%; 
+    transition: .4s ease-in-out;
+}
+.banner-btn:hover,
+.bttn:hover{
+    color: grey;
 }
 .banner-btn{
     background-color: #243230CC;
     width: 258px;
     height: 75px;
+    transition: .4s ease-in-out;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -217,9 +271,11 @@ header .header-top{
     
 }
 .b-btn{
-    bottom: 30%;
-    right: -89px;
-    position: absolute;
+    /* bottom: 30%; */
+    top: 50vh;
+    right: -91px;
+    position: fixed;
+    z-index: 998;
     transform: rotate(-90deg);
 }
 /* About-Sec */
@@ -295,6 +351,10 @@ header .header-top{
     justify-content: space-between;
     padding-top: 47px;
 }
+.promotion-list-items{
+    max-height: 600px;
+    overflow: hidden;
+}
 .promotion-list-text{
     background-color: #fff;
     border-radius: 5px;
@@ -305,8 +365,9 @@ header .header-top{
     z-index: 1;
     position: relative;
     box-shadow: 3px 4px 10px #0000001A;
+    transition: .4s ease-in-out;
 }
-.promotion-list li.second .promotion-list-text{
+.promotion-list li .promotion-list-items:hover .promotion-list-text{
     margin-top: -61%;
 }
 .promotion-list-items img{
@@ -396,7 +457,7 @@ header .header-top{
 /* ===event-sec==== */
 .event-sec{
     padding: 70px 0px;
-
+    overflow: hidden;
 }
 .event-sec h2{
     font-size: 40px;
@@ -407,7 +468,6 @@ header .header-top{
 }
 .event-list-items .event-box{
     max-width: 100%;
-    min-height: 647px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -419,7 +479,7 @@ header .header-top{
     border-radius: 5px;
 }
 .event-list-text{
-    padding: 18px 30px 0px 34px;
+    padding: 30px 30px 0px 34px;
     
 }
 .event-list-text h4{
@@ -459,6 +519,7 @@ header .header-top{
     letter-spacing: 6px;
     color: #FFFFFF;
     padding-bottom: 0;
+    line-height: 16px;
 }
 
 .owl-stage{padding-left:0px !important;}
@@ -525,6 +586,13 @@ header .header-top{
     padding-bottom: 6px;
     padding-left: 3px;
     padding-right: 3px;
+}
+.gallery-img-list li a{
+    display: block;
+    transition: 0.3s ease;
+}
+.gallery-img-list li a:hover{
+    opacity: .8;
 }
 .gallery-img-list li img{
     width: 100%;
@@ -644,6 +712,10 @@ footer{
     color: #fff;
     font-size: 14px;
     font-weight: 500;
+    border-radius: 5px;
+}
+.f-form button.bttn:hover{
+    color: grey;
 }
 .social{
     padding: 42px 0px 39px 0px;
@@ -670,6 +742,12 @@ footer{
 }
 .social-img li+li{
     margin-left: 13px;
+}
+.social-img li a{
+    transform: 0.3s ease;
+}
+.social-img li a:hover{
+    opacity: 0.8;
 }
 .fb{
     background-color: rgba(182, 182, 182, .1);
@@ -700,6 +778,9 @@ footer{
     font-family: 'Lato';
     text-transform: uppercase;
 }
+.event-sub .owl-carousel .owl-stage-outer{
+    overflow: visible;
+}
 /* Responsive */
 @media (min-width: 992px){
     .container{
@@ -710,8 +791,8 @@ footer{
         .event-sub {
             max-width: 1542px;
             padding-left: 76px;
-            padding-right: 35px;
-            margin-left: auto;
+            padding-right: 76px;
+            margin: auto;
         }
     
 }
@@ -735,6 +816,10 @@ footer{
     }
 }
 @media (max-width: 1500px){
+    .promotion-list-items{
+        max-height: 465px;
+        overflow: hidden;
+    }
     .promotion-list-items img {
         width: 456px;
         height: 385px;
@@ -872,6 +957,9 @@ footer{
     .header-bottom .navbar-nav {
         width: 100%;
     }
+    .promotion-list li .promotion-list-items:hover .promotion-list-text{
+        margin-top: -38%;
+    }
     .promotion-section .owl-item img {
         display: block;
         width: 73%;
@@ -880,10 +968,8 @@ footer{
     .promotion-section::after, .promotion-section::before {
         width: 85px;
     }
-    .promotion-list .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-next {
-        width:45px;
-        height: 20px;
-        right: 1%;
+    .promotion-list.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev {
+       display: none;
     }
     .promotion-list .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev {
         width: 45px;
@@ -945,15 +1031,118 @@ footer{
     .about-left p{
         padding-bottom: 0;
     }
-    .promotion-list .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-next {
-        width: 45px;
-        height: 20px;
-        right: -8%;
+    .promotion-list li .promotion-list-items:hover .promotion-list-text{
+        margin-top: -54%;
     }
-    .promotion-list .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev {
+    .promotion-list.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-next {
         width: 45px;
         height: 20px;
-        left: -8%;
+    }
+    .promotion-lis.owl-carousel .owl-nav button.owl-prev {
+        left: 2%;
+    }
+    .promotion-list.owl-carousel .owl-nav button.owl-next{
+        right: -5%;
+    }
+    .event-sub {
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+    .container{
+        padding: 0 30px;
+    }
+    .banner h1 {
+        font-size: 35px;
+    }
+    .navbar-brand {
+        width: 170px;
     }
 }
-    
+@media(max-width:575px){
+    .navbar-brand {
+        width: 140px;
+    }
+    .banner-btn {
+        width: 189px;
+        height: 38px;
+        font-size: 14px;
+    }
+    .b-btn {
+        right: -75px;
+    }
+    .banner-full {
+        padding-top: 250px;
+    }
+   
+    .footer-nav {
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        width: 100%;
+    }
+    .f-btm-right {
+        max-width: 100%;
+        width: 100%;
+    }
+    .footer-nav li+li {
+        margin-left: 0;
+    }
+    .promotion-section {
+        padding: 50px 0px 50px 0px;
+    }
+    .promotion-list li .promotion-list-items:hover .promotion-list-text{
+        margin-top: -46%;
+    }
+    .promotion-list.owl-carousel .owl-nav button.owl-next, 
+    .promotion-list.owl-carousel .owl-nav button.owl-prev {
+        width: 30px;
+        height: 15px;
+    }
+    .about-sec {
+        padding: 50px 0px;
+    }
+    header {
+        padding-top: 38px;
+        padding-bottom: 20px;
+    }
+    .fixed-header {
+        padding-top: 20px;
+    }
+    .promotion-section .owl-item img {
+        width: 100%;
+    }
+    .promotion-list-text {
+        max-width: 100%;
+    }
+    .view-btn .bttn {
+        margin-top: 45px;
+    }
+    }
+@media(max-width:480px){
+    .banner h1 {
+        font-size: 30px;
+    }
+    h2 {
+        font-size: 28px !important;
+    }
+    .promotion-list li .promotion-list-items:hover .promotion-list-text{
+        margin-top: -60%;
+    }
+    .promotion-list-text h3 {
+        font-size: 20px;
+    }
+    .navbar-brand {
+        width: 125px;
+    }
+    .about-left p {
+        padding: 25px 0px 35px 0px;
+    }
+    .bttn {
+        margin-top: 25px;
+    }
+    .social-img li+li {
+        margin-left: 8px;
+    }
+
+
+}
